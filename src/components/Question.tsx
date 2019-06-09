@@ -1,11 +1,11 @@
-import {PlayBuzzQuestion} from '../dec/components';
-
+import {PlayBuzzQuestion,questions} from './BuzzTypes'
 
 const Question :React.FC<PlayBuzzQuestion> = ( q: PlayBuzzQuestion)=>{
 
+
     const answersList = q.options.map((answer,i)=>{
         <li  key={i}>
-        <label onClick={}>
+        <label >
             <span>{answer}</span>
         </label>
         </li>
