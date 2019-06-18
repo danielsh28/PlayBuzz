@@ -1,38 +1,36 @@
-import {PageMode} from "./components/BuzzTypes";
-import {func} from "prop-types";
+import {PlayBuzzQuestion, BUZZ_QUESTIONS, QuestionState} from "./components/BuzzTypes";
 import {combineReducers, createStore, Reducer} from "redux";
+
 
 interface Action {
     type: string,
     payload:any
 
 }
-const initPageState= {
-    page: PageMode.start,
-    questionIndex : -1,
-};
 
 
-
-const pageReducer= ( state =initPageState  ,action : Action) => {
+ const initQuestionState :QuestionState = {
+    question :  BUZZ_QUESTIONS[0],
+     questionIndex :0
+ }
+const questionReducer =   (state : QuestionState = initQuestionState,action :Action){
     switch (action.type) {
-
-        case 'START_OVER':
-            return {...initPageState};
-
         case 'NEXT_QUESTION':
-            return  {...state,
-                questionIndex : state.questionIndex + action.payload};
-
-        case  'VIEW_CHANGE':
-            return{page: action.payload,
-                questionIndex: state.page === PageMode.start ? 0: -1};
+            state = {
+            question:BUZZ_QUESTIONS[++state.questionIndex],
+            questionIndex:++state.questionIndex}
+            break;
         default:
-                return state;
     }
+
+    return state;
 }
 
+
+
+
+
 export function  configureStore(){
-    const reducer  : Reducer = combineReducers( {pages : pageReducer});
+    const reducer  : Reducer = combineReducers( {questions : questionReducer});
     return createStore(reducer);
 }

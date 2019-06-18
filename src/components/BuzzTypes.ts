@@ -9,7 +9,12 @@
     summery
 }
 
-export const  questions : Array<PlayBuzzQuestion> =[{
+export  interface QuestionState{
+    question :PlayBuzzQuestion,
+    questionIndex :number
+}
+
+export const  BUZZ_QUESTIONS : Array<PlayBuzzQuestion> =[{
     text:'How old are you?',
     options:['15-23','24-32','40-100','32-40'],
 }, {

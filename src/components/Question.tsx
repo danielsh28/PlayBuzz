@@ -1,18 +1,27 @@
-import {PlayBuzzQuestion,questions} from './BuzzTypes'
+import {PlayBuzzQuestion, BUZZ_QUESTIONS, QuestionState} from './BuzzTypes'
+import * as React from "react";
+import {connect} from 'react-redux';
 
-const Question :React.FC<PlayBuzzQuestion> = ( q: PlayBuzzQuestion)=>{
+interface QProps {
+    questNum:number,
+    isLast : boolean,
+    question :PlayBuzzQuestion
+}
+const Question :React.FC<QProps> = ( {question})=>{
 
 
-    const answersList = q.options.map((answer,i)=>{
-        <li  key={i}>
+    const answersList = question.options.map((option,i)=>{
+    return  <li key={i}>
         <label >
-            <span>{answer}</span>
+            <span>{option}</span>
         </label>
         </li>
-    })
+    });
+
+
 return (
     <div>
-        <h1>{q.text}</h1>
+        <h1>{question.text}</h1>
         <ol>
         {answersList}
         </ol>
@@ -20,3 +29,12 @@ return (
 
 )
 }
+
+
+const mapStateToProps = (state :QuestionState) => ({
+        question: state.question
+    })
+;
+
+connect(mapStateToProps,null)(Question);
+
