@@ -2,9 +2,9 @@ import {PlayBuzzQuestion, BUZZ_QUESTIONS, QuestionState} from "./components/Buzz
 import {combineReducers, createStore, Reducer} from "redux";
 
 
-interface Action {
+interface PlaybuzzAction {
     type: string,
-    payload:any
+    payload:PlayBuzzQuestion
 
 }
 
@@ -13,7 +13,7 @@ interface Action {
     question :  BUZZ_QUESTIONS[0],
      questionIndex :0
  }
-const questionReducer =   (state : QuestionState = initQuestionState,action :Action){
+const questionReducer =   (state  = initQuestionState,action :PlaybuzzAction) =>{
     switch (action.type) {
         case 'NEXT_QUESTION':
             state = {
@@ -30,7 +30,6 @@ const questionReducer =   (state : QuestionState = initQuestionState,action :Act
 
 
 
-export function  configureStore(){
-    const reducer  : Reducer = combineReducers( {questions : questionReducer});
-    return createStore(reducer);
+export default function  configureStore(){
+    return createStore(combineReducers( {questions : questionReducer}));
 }
