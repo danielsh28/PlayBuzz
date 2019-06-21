@@ -1,8 +1,8 @@
 import {PlayBuzzQuestion, BUZZ_QUESTIONS, QuestionState} from "./components/BuzzTypes";
-import {combineReducers, createStore, Reducer} from "redux";
+import {combineReducers, createStore} from "redux";
 
 
-interface PlaybuzzAction {
+interface PlaybuzzAction  {
     type: string,
     payload:PlayBuzzQuestion
 
@@ -10,7 +10,7 @@ interface PlaybuzzAction {
 
 
  const initQuestionState :QuestionState = {
-    question :  BUZZ_QUESTIONS[0],
+     question :  BUZZ_QUESTIONS[0],
      questionIndex :0
  }
 const questionReducer =   (state  = initQuestionState,action :PlaybuzzAction) =>{

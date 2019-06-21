@@ -9,10 +9,8 @@ const App: React.FC = () => {
 
     return (
     <div className="App">
-
-    <Route  exact path={'/'} component={OpeningPage}/>
-    <Route path={'/playbuzz'} component={Questionnaire}/>
-
+     <Route  exact path={'/'} component={OpeningPage}/>
+     <Route path={'/playbuzz'} component={Questionnaire}/>
     </div>
   );
 }

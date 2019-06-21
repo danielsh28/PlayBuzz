@@ -1,6 +1,6 @@
 import React from 'react';
-import {PlayBuzzQuestion,QuestionState} from "../components/BuzzTypes";
-import {connect} from "react-redux";
+import {PlayBuzzQuestion} from "../components/BuzzTypes";
+import {connect} from 'react-redux';
 import {Dispatch,} from "redux";
 interface PlayBuzzProps {
     question:PlayBuzzQuestion,
@@ -23,12 +23,12 @@ const  Questionnaire : React.FC<PlayBuzzProps> = ({question,nextQuest})=>{
     )
 }
 
-const mapStateToProps = (state:QuestionState) =>({
-question: state.question
+const mapStateToProps = (state :any) =>{
+    console.log(state.question);
+    return {question: state.questions.question,};
+};
+const mapDispatchToProps = (dispatch:Dispatch)=> ({
+    nextQuest : () => dispatch({type:'NEXT_QUESTION'})
 });
-const mapDispatchToProps = (dispatch:Dispatch)=>{
-    nextQuest : dispatch({type:'NEXT_QUESTION'});
-}
 
-connect(mapStateToProps,mapDispatchToProps)(Questionnaire);
-export default Questionnaire;
+export default connect(mapStateToProps,mapDispatchToProps)(Questionnaire);
