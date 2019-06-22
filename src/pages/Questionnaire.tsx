@@ -4,12 +4,21 @@ import {connect} from 'react-redux';
 import {Dispatch,} from "redux";
 interface PlayBuzzProps {
     question:PlayBuzzQuestion,
-    nextQuest:Function
+    nextQuest:Function,
+    goToSummery: Function,
+    isLast: boolean
 
 }
-const  Questionnaire : React.FC<PlayBuzzProps> = ({question,nextQuest})=>{
+const  Questionnaire : React.FC<PlayBuzzProps> = ({question,nextQuest,isLast})=>{
     function  submitAnswer(){
-        nextQuest();
+        if(isLast){
+/*
+            goToSummary();
+*/
+        }
+        else {
+            nextQuest();
+        }
     }
     const answers  = question.options.map( (a : string) => <li
     onClick={submitAnswer}>{a}</li>);
