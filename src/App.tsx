@@ -5,9 +5,12 @@ import OpeningPage from './pages/OpeningPage'
 import Questionnaire from "./pages/Questionnaire";
 import {SummaryPage} from "./pages/SummaryPage";
 import {connect} from "react-redux";
+import {PageMode} from "./StoreConfig";
 
-
-const App: React.FC<{isLast:boolean}>= ({isLast}) => {
+interface AppProps{
+    isLast:boolean
+}
+const App: React.FC<AppProps>= ({isLast}) => {
 
 
     return (
@@ -15,11 +18,13 @@ const App: React.FC<{isLast:boolean}>= ({isLast}) => {
         <switch>
      <Route   path={'/'} component={OpeningPage}/>
      <Route path={'/playbuzz'} component={Questionnaire}/>
-     isLast && <Route path={'/summary'} component={SummaryPage}/>
+            {isLast} && <Route path={'/summary'} component={SummaryPage}/>
         </switch>
     </div>
   );
 }
-connect((state:any)=>({}))
 
-export default App;
+const mapStatetoProps = (state:any)=>({
+    isLast: state.pages.page == PageMode.SUMMARY
+});
+export default connect(mapStatetoProps,null)(App);

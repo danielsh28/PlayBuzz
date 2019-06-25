@@ -1,7 +1,6 @@
 import React from 'react';
-import {PlayBuzzQuestion, SummaryProps} from "../components/BuzzTypes";
-import {connect} from 'react-redux';
-import {Dispatch,} from "redux";
+import {SummaryProps} from "../components/BuzzTypes";
+
 
 
 export const  SummaryPage :React.FC<SummaryProps> = ({description}) =>{

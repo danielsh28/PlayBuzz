@@ -4,11 +4,6 @@
       isLast: boolean
 }
 
- export enum PageMode{
-    start,
-    quiz,
-    summery
-}
 
 export  interface QuestionState{
     question :PlayBuzzQuestion,
