@@ -16,21 +16,42 @@ interface PageAction{
     payload: PageMode
 }
 interface PageState {
-    page:PageMode
+    page:PageMode,
+}
+
+interface ScoreState{
+  currScore:number,
 
 }
 
+interface ScoreAction {
+    type:String,
+    payload:number
+}
 
 const initQuestionState :QuestionState = {
     question :  BUZZ_QUESTIONS[0],
     questionIndex :0
 }
+ const initScoreState : ScoreState = {
+    currScore:0
+ }
+const scoreReducer = (state : ScoreState = initScoreState,action : ScoreAction)=>{
+    switch(action.type){
+        case 'UPDATE_SCORE':
+            const score: number = state.currScore + 1;
+            state ={...state,currScore : score}
+
+    }
+
+    return state;
+}
 const questionReducer =   (state  = initQuestionState,action :PlaybuzzAction) =>{
     switch (action.type) {
         case 'NEXT_QUESTION':
             state = {
-                question:BUZZ_QUESTIONS[++state.questionIndex],
-                questionIndex:++state.questionIndex}
+                question:BUZZ_QUESTIONS[state.questionIndex + 1],
+                questionIndex:state.questionIndex + 1}
             break;
         default:
     }
@@ -57,5 +78,6 @@ const pageReducer = (state  :PageState= initPageState, action :PageAction,) =>{
 export default function  configureStore(){
     return createStore(combineReducers(
         {questions : questionReducer,
-            pages:pageReducer}));
+            pages:pageReducer,
+        score : scoreReducer}));
 }

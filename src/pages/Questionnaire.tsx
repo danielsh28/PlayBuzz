@@ -11,11 +11,11 @@ interface PlayBuzzProps {
 }
 const  Questionnaire : React.FC<PlayBuzzProps> = ({question,goToNextQuest,isLast,calculateResultAndGoToSummary})=>{
     function  submitAnswer(){
-        if(isLast){
+        if(question.isLast){
             calculateResultAndGoToSummary()
         }
         else {
-            goToNextQuest();
+            goToNextQuest(question.isLast);
         }
     }
     const answers  = question.options.map( (a : string) => <li
@@ -34,7 +34,7 @@ const mapStateToProps = (state :any) =>{
     return {question: state.questions.question,};
 };
 const mapDispatchToProps = (dispatch:Dispatch)=> ({
-    goToNextQuest : () => dispatch({type:'NEXT_QUESTION'}),
+    goToNextQuest :() => dispatch({type:'NEXT_QUESTION'}),
     calculateResultAndGoToSummary: () => dispatch({type:'LAST_QUESTION_SUBMITTED'})
 
 });
