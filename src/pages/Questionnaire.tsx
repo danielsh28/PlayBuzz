@@ -10,16 +10,16 @@ interface PlayBuzzProps {
 
 }
 const  Questionnaire : React.FC<PlayBuzzProps> = ({question,goToNextQuest,isLast,calculateResultAndGoToSummary})=>{
-    function  submitAnswer(){
+    function  submitAnswer(currScore: number){
         if(question.isLast){
-            calculateResultAndGoToSummary()
+            calculateResultAndGoToSummary(currScore)
         }
         else {
-            goToNextQuest(question.isLast);
+            goToNextQuest(currScore);
         }
     }
-    const answers  = question.options.map( (a : string) => <li
-    onClick={submitAnswer}>{a}</li>);
+    const answers  = question.options.map( (a : string,index) => <li key={index}
+    onClick={submitAnswer.bind(null,index + 1)}>{a}</li>);
     return (
         <div>
         <h1>{question.text}</h1>
@@ -34,9 +34,7 @@ const mapStateToProps = (state :any) =>{
     return {question: state.questions.question,};
 };
 const mapDispatchToProps = (dispatch:Dispatch)=> ({
-    goToNextQuest :() => dispatch({type:'NEXT_QUESTION'}),
-    calculateResultAndGoToSummary: () => dispatch({type:'LAST_QUESTION_SUBMITTED'})
-
-});
+    goToNextQuest :(score:number) => dispatch({type:'NEXT_QUESTION',payload:score}),
+    calculateResultAndGoToSummary: (score:number) => dispatch({type: 'LAST_QUESTION_SUBMITTED', payload:score})});
 
 export default connect(mapStateToProps,mapDispatchToProps)(Questionnaire);

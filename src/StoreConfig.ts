@@ -38,10 +38,14 @@ const initQuestionState :QuestionState = {
  }
 const scoreReducer = (state : ScoreState = initScoreState,action : ScoreAction)=>{
     switch(action.type){
-        case 'UPDATE_SCORE':
-            const score: number = state.currScore + 1;
-            state ={...state,currScore : score}
-
+        case 'NEXT_QUESTION':
+            state ={...state,currScore :  state.currScore +action.payload};
+            break;
+        case 'LAST_QUESTION_SUBMITTED':
+            state = {...state,currScore :  state.currScore +action.payload};
+            break;
+        case 'RESET':
+            state = initScoreState;
     }
 
     return state;
@@ -53,7 +57,8 @@ const questionReducer =   (state  = initQuestionState,action :PlaybuzzAction) =>
                 question:BUZZ_QUESTIONS[state.questionIndex + 1],
                 questionIndex:state.questionIndex + 1}
             break;
-        default:
+        case 'RESET':
+            state = initQuestionState;
     }
 
     return state;
@@ -66,8 +71,12 @@ const pageReducer = (state  :PageState= initPageState, action :PageAction,) =>{
 
     switch (action.type){
         case 'LAST_QUESTION_SUBMITTED':
-            state = {...state,page:PageMode.SUMMARY}
+            state = {...state,page:PageMode.SUMMARY};
+            break;
+        case 'RESET':
+            state = initPageState;
     }
+
 
     return state;
 }

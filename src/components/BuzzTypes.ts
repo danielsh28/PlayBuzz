@@ -11,7 +11,8 @@ export  interface QuestionState{
 }
 
 export interface SummaryProps {
-    description: string,
+    resetQuiz: Function,
+    score:number
 
 
 }
@@ -26,7 +27,7 @@ export const RESULTS: Array<BuzzResult> = [{
 },{result:'your normal, just like everybody else, you probably make children because everybody does and you be OK at it',
 minScore:6},{
     result:'you was born to be a parent',
-    minScore:8
+    minScore:7
 }];
 
 export const  BUZZ_QUESTIONS : Array<PlayBuzzQuestion> =[{
