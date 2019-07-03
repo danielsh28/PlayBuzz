@@ -2,6 +2,8 @@ import React from 'react';
 import {BuzzResult, RESULTS, SummaryProps} from "../components/BuzzTypes";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
+import Button from '@material-ui/core/Button';
+
 
 
 export const  SummaryPage :React.FC<SummaryProps> = ({score,resetQuiz}) =>{
@@ -27,7 +29,7 @@ export const  SummaryPage :React.FC<SummaryProps> = ({score,resetQuiz}) =>{
             <p className="textResult">
                 {getResult()}
             </p>
-            <button onClick={resetBuzzQuiz}>RESET QUIZ</button>
+            <Button variant="contained"  color="primary" onClick={resetBuzzQuiz}>RESET QUIZ</Button>
         </div>
     )
 }

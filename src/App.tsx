@@ -18,7 +18,7 @@ const App: React.FC<AppProps>= ({isLast,isReset}) => {
     return (
     <div className="App">
         <Switch>
-            <Route path={'/playbuzz'} component={Questionnaire}/>
+            <Route path={'/playbuzz/:questNum'} component={Questionnaire}/>
             {!isReset && <Route path={'/summary'} component={SummaryPage}/>}
             <Route   path={'/'} component={OpeningPage}/>
         </Switch>
