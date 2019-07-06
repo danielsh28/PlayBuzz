@@ -2,8 +2,11 @@ import React from 'react';
 import {PlayBuzzQuestion} from "../components/BuzzTypes";
 import {connect} from 'react-redux';
 import {Dispatch,} from "redux";
-import {match, RouteComponentProps} from "react-router";
+import {RouteComponentProps} from "react-router";
+import ListItem from '@material-ui/core/ListItem'
 import {Link} from "react-router-dom";
+import {Typography} from "@material-ui/core";
+import GridList from "@material-ui/core/GridList";
 interface PlayBuzzProps {
     question:PlayBuzzQuestion,
     goToNextQuest:Function,
@@ -28,14 +31,14 @@ const  Questionnaire : React.FC<PlayBuzzProps & RouteComponentProps<matchParams>
     }
     const answers  = question.options.map( (a : string,index) =>
         <Link to={`/playbuzz/${questNum + 1}`}>
-            <li key={index} onClick={submitAnswer.bind(null,index + 1)}>{a}</li>
+            <ListItem  color='secondary' key={index} onClick={submitAnswer.bind(null,index + 1)}>{a}</ListItem>
         </Link>);
     return (
         <div>
-            <h1>{question.text}</h1>
-            <ul>
+            <Typography color= 'primary' >{question.text}</Typography>
+            <GridList>
                 {answers}
-            </ul>
+            </GridList>
         </div>
     )
 }
