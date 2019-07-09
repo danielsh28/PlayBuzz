@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import configureStore from "./StoreConfig";
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
-import theme from './theme';
+import {theme} from './theme';
 
 const store = configureStore();
 

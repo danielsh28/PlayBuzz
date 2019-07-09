@@ -3,10 +3,14 @@ import {PlayBuzzQuestion} from "../components/BuzzTypes";
 import {connect} from 'react-redux';
 import {Dispatch,} from "redux";
 import {RouteComponentProps} from "react-router";
-import ListItem from '@material-ui/core/ListItem'
-import {Link} from "react-router-dom";
+import { Link as RouteLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 import {Typography} from "@material-ui/core";
 import GridList from "@material-ui/core/GridList";
+import Grid from '@material-ui/core/Grid';
+import Container from "@material-ui/core/Container";
+import {useStyles} from "../theme";
+
 interface PlayBuzzProps {
     question:PlayBuzzQuestion,
     goToNextQuest:Function,
@@ -29,17 +33,23 @@ const  Questionnaire : React.FC<PlayBuzzProps & RouteComponentProps<matchParams>
             goToNextQuest(currScore);
         }
     }
+    const classes = useStyles();
     const answers  = question.options.map( (a : string,index) =>
-        <Link to={`/playbuzz/${questNum + 1}`}>
-            <ListItem  color='secondary' key={index} onClick={submitAnswer.bind(null,index + 1)}>{a}</ListItem>
-        </Link>);
+        <Grid item xs>
+       <Link   component={RouteLink} to={`/playbuzz/${questNum + 1}`}>
+            <Typography className={classes.root}  key={index} onClick={submitAnswer.bind(null, index + 1)}>
+                {a}</Typography >
+        </Link>
+        </Grid>);
     return (
-        <div>
-            <Typography color= 'primary' >{question.text}</Typography>
-            <GridList>
-                {answers}
-            </GridList>
-        </div>
+        <Container>
+        <Typography color= 'primary' >{question.text}</Typography>
+
+        <Grid container direction ='column' spacing={5} >
+
+            {answers}
+        </Grid>
+        </Container>
     )
 }
 
