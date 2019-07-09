@@ -5,15 +5,14 @@ import {Dispatch} from "redux";
 import Button from '@material-ui/core/Button';
 
 
+export const SummaryPage: React.FC<SummaryProps> = ({score, resetQuiz}) => {
 
-export const  SummaryPage :React.FC<SummaryProps> = ({score,resetQuiz}) =>{
+    function getResult(): string {
+        const results: Array<BuzzResult> = [...RESULTS].reverse();
 
-    function getResult() :string {
-        const results : Array<BuzzResult> = [...RESULTS].reverse();
-
-        const resultElement : BuzzResult | undefined  = results.find(r=> score >= r.minScore);
-        if (!resultElement){
-            throw {message:'score is not value for result!'};
+        const resultElement: BuzzResult | undefined = results.find(r => score >= r.minScore);
+        if (!resultElement) {
+            throw {message: 'score is not value for result!'};
         }
 
         return resultElement.result
@@ -23,25 +22,26 @@ export const  SummaryPage :React.FC<SummaryProps> = ({score,resetQuiz}) =>{
     function resetBuzzQuiz() {
         resetQuiz();
     }
-    return(
+
+    return (
         <div>
             <h1>Summary</h1>
             <p className="textResult">
                 {getResult()}
             </p>
-            <Button variant="contained"  color="primary" onClick={resetBuzzQuiz}>RESET QUIZ</Button>
+            <Button variant="contained" color="primary" onClick={resetBuzzQuiz}>RESET QUIZ</Button>
         </div>
     )
-}
+};
 
-const mapStateToProps = (state:any)=>   {
+const mapStateToProps = (state: any) => {
 
-    return{
+    return {
         score: state.score.currScore
     }
-}
-const mapDispatchToProps = (dispatch:Dispatch)=>({
-  resetQuiz :() => dispatch({type:'RESET'})
+};
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    resetQuiz: () => dispatch({type: 'RESET'})
 
-})
-export default connect(mapStateToProps,mapDispatchToProps)(SummaryPage);
+});
+export default connect(mapStateToProps, mapDispatchToProps)(SummaryPage);

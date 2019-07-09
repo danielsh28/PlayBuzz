@@ -6,14 +6,13 @@ import {RouteComponentProps} from "react-router";
 import { Link as RouteLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import {Typography} from "@material-ui/core";
-import GridList from "@material-ui/core/GridList";
 import Grid from '@material-ui/core/Grid';
 import Container from "@material-ui/core/Container";
 import {useStyles} from "../theme";
 
 interface PlayBuzzProps {
-    question:PlayBuzzQuestion,
     goToNextQuest:Function,
+    question:PlayBuzzQuestion,
     calculateResultAndGoToSummary: Function,
     isLast: boolean
 
@@ -22,7 +21,7 @@ interface  matchParams {
     questNum:string
 
 }
-const  Questionnaire : React.FC<PlayBuzzProps & RouteComponentProps<matchParams>> = ({match,question,goToNextQuest,isLast,calculateResultAndGoToSummary})=>{
+const  Questionnaire : React.FC<PlayBuzzProps & RouteComponentProps<matchParams>> = ({match,question,goToNextQuest,calculateResultAndGoToSummary})=>{
     const questNum = parseInt(match.params.questNum);
 
     function  submitAnswer(currScore: number){
@@ -51,7 +50,7 @@ const  Questionnaire : React.FC<PlayBuzzProps & RouteComponentProps<matchParams>
         </Grid>
         </Container>
     )
-}
+};
 
 const mapStateToProps = (state :any) =>{
     return {question: state.questions.question,};
