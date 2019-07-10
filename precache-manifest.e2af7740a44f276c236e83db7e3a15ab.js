@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "75a9c9d146ff2001e2ffff067cbcaed5",
+    "revision": "868459a21bfc67b45fd5d7f82dab6e73",
     "url": "/PlayBuzz/index.html"
   },
   {
-    "revision": "f2c27b4eb4f73bd01ddf",
+    "revision": "59e03cdefbb5dad65a72",
     "url": "/PlayBuzz/static/css/main.455b968c.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/PlayBuzz/static/js/2.7ddf5e4d.chunk.js"
   },
   {
-    "revision": "f2c27b4eb4f73bd01ddf",
-    "url": "/PlayBuzz/static/js/main.43b817a6.chunk.js"
+    "revision": "59e03cdefbb5dad65a72",
+    "url": "/PlayBuzz/static/js/main.3985d992.chunk.js"
   },
   {
     "revision": "9f6d866d5bb6da32a033",

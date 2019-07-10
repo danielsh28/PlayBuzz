@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/PlayBuzz/static/css/main.455b968c.chunk.css",
-    "main.js": "/PlayBuzz/static/js/main.43b817a6.chunk.js",
-    "main.js.map": "/PlayBuzz/static/js/main.43b817a6.chunk.js.map",
+    "main.js": "/PlayBuzz/static/js/main.3985d992.chunk.js",
+    "main.js.map": "/PlayBuzz/static/js/main.3985d992.chunk.js.map",
     "runtime~main.js": "/PlayBuzz/static/js/runtime~main.bb1106c7.js",
     "runtime~main.js.map": "/PlayBuzz/static/js/runtime~main.bb1106c7.js.map",
     "static/js/2.7ddf5e4d.chunk.js": "/PlayBuzz/static/js/2.7ddf5e4d.chunk.js",
     "static/js/2.7ddf5e4d.chunk.js.map": "/PlayBuzz/static/js/2.7ddf5e4d.chunk.js.map",
     "index.html": "/PlayBuzz/index.html",
-    "precache-manifest.2537cfbf592edd0f5cdfa69a3854cdc8.js": "/PlayBuzz/precache-manifest.2537cfbf592edd0f5cdfa69a3854cdc8.js",
+    "precache-manifest.e2af7740a44f276c236e83db7e3a15ab.js": "/PlayBuzz/precache-manifest.e2af7740a44f276c236e83db7e3a15ab.js",
     "service-worker.js": "/PlayBuzz/service-worker.js",
     "static/css/main.455b968c.chunk.css.map": "/PlayBuzz/static/css/main.455b968c.chunk.css.map"
   }
