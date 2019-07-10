@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "38d8aae80e16d8eef0fe660d53f3010f",
+    "revision": "75a9c9d146ff2001e2ffff067cbcaed5",
     "url": "/PlayBuzz/index.html"
   },
   {
