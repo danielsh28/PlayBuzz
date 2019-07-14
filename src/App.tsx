@@ -6,7 +6,6 @@ import Questionnaire from "./pages/Questionnaire";
 import SummaryPage from "./pages/SummaryPage";
 import {connect} from "react-redux";
 import {PageMode} from "./StoreConfig";
-import {WebView} from "react-native-webview";
 
 interface AppProps {
     isLast: boolean,
@@ -20,7 +19,6 @@ const App: React.FC<AppProps> = ({isLast, isReset}) => {
 
 
     return (
-        <WebView>
         <div className="App">
             <Switch>
                 <Route path={'/playbuzz/:questNum'} component={Questionnaire}/>
@@ -30,7 +28,6 @@ const App: React.FC<AppProps> = ({isLast, isReset}) => {
             {isReset && <Redirect to={'/'}/>}
             {isLast && <Redirect to={'/summary'}/>}
         </div>
-        </WebView>
     );
 };
 
