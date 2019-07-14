@@ -16,6 +16,7 @@
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-native": "^0.60.3",
     "react-native-webview": "^5.12.1",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.1",
