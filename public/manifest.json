@@ -1,15 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "PlayBuzz",
+  "name": "Are You Ready To Be A Parent?",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "icon-student-parent.ico",
+      "sizes": "192x192 512x512",
       "type": "image/x-icon"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "prefer_related_applications": false
 }

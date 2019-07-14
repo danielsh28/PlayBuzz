@@ -9,6 +9,14 @@ import { ThemeProvider } from '@material-ui/styles';
 import {theme} from './theme';
 
 const store = configureStore();
+export let deferredPrompt :any;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+});
 
 ReactDOM.render(
     <ThemeProvider theme={theme}>
@@ -23,4 +31,6 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();
+
+

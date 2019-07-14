@@ -5,10 +5,12 @@ import {Dispatch,} from "redux";
 import {RouteComponentProps} from "react-router";
 import { Link as RouteLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
-import {Typography} from "@material-ui/core";
+import {Theme, Typography} from "@material-ui/core";
 import Grid from '@material-ui/core/Grid';
-import Container from "@material-ui/core/Container";
+import { useTheme } from '@material-ui/styles';
 import {useStyles} from "../theme";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
 
 interface PlayBuzzProps {
     goToNextQuest:Function,
@@ -21,32 +23,32 @@ interface  matchParams {
     questNum:string
 
 }
-const  Questionnaire : React.FC<PlayBuzzProps & RouteComponentProps<matchParams>> = ({match,question,goToNextQuest,calculateResultAndGoToSummary})=>{
+const  Questionnaire : React.FC<PlayBuzzProps & RouteComponentProps<matchParams>> =
+    ({match,question,goToNextQuest,calculateResultAndGoToSummary})=>{
+    const theme :Theme = useTheme();
     const questNum = parseInt(match.params.questNum);
-
-    function  submitAnswer(currScore: number){
+    const classes = useStyles();
+        function  submitAnswer(currScore: number){
         if(question.isLast){
             calculateResultAndGoToSummary(currScore)
         }
         else {
             goToNextQuest(currScore);
         }
+
     }
-    const classes = useStyles();
-    const answers  = question.options.map( (a : string,index) =>
-        <Grid item xs>
-       <Link   component={RouteLink} to={`/playbuzz/${questNum + 1}`}>
-            <Typography className={classes.root}  key={index} onClick={submitAnswer.bind(null, index + 1)}>
-                {a}</Typography >
-        </Link>
-        </Grid>);
-    return (
-        <Container>
+    const options = question.options.map( (a : string,index) =>(
+        <Grid item xs={10} >
+            <Link   component={RouteLink} to={`/playbuzz/${questNum + 1}`}>
+                <Paper   className={classes.root} key={index} onClick={submitAnswer.bind(null, index + 1)}>
+                    {a}</Paper >
+            </Link>
+        </Grid>));
+    return(
+        <Container style={{backgroundColor:theme.palette.primary.main}}>
         <Typography color= 'primary' >{question.text}</Typography>
-
-        <Grid container direction ='column' spacing={5} >
-
-            {answers}
+        <Grid  color='blue' container alignItems='center'  spacing={3} direction ='column' >
+            {options}
         </Grid>
         </Container>
     )
